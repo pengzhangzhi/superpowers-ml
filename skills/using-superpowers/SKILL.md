@@ -41,6 +41,11 @@ Skills use Claude Code tool names. Non-CC platforms: see `references/copilot-too
 
 # Using Skills
 
+## Working Style
+
+- Fail fast: start with the cheapest useful check, stop on failure, and scale only after it passes.
+- Keep partner-facing responses concise. Discuss one decision at a time; use a small text diagram when helpful. Never dump a wall of text.
+
 ## The Rule
 
 **Invoke relevant or requested skills BEFORE any response or action.** Even a 1% chance a skill might apply means that you should invoke the skill to check. If an invoked skill turns out to be wrong for the situation, you don't need to use it.
