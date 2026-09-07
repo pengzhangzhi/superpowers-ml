@@ -7,8 +7,6 @@ description: Use when about to claim work is complete, fixed, or passing, before
 
 ## Overview
 
-Claiming work is complete without verification is dishonesty, not efficiency.
-
 **Core principle:** Evidence before claims, always.
 
 **Violating the letter of this rule is violating the spirit of this rule.**
@@ -105,15 +103,6 @@ Skip any step = lying, not verifying
 ❌ Trust agent report
 ```
 
-## Why This Matters
-
-From 24 failure memories:
-- your human partner said "I don't believe you" - trust broken
-- Undefined functions shipped - would crash
-- Missing requirements shipped - incomplete features
-- Time wasted on false completion → redirect → rework
-- Violates: "Honesty is a core value. If you lie, you'll be replaced."
-
 ## When To Apply
 
 **ALWAYS before:**
@@ -129,6 +118,7 @@ From 24 failure memories:
 - Paraphrases and synonyms
 - Implications of success
 - ANY communication suggesting completion/correctness
+<<<<<<< HEAD
 
 ## The Bottom Line
 
@@ -150,3 +140,5 @@ A green test suite proves the code PATH might run. It does NOT prove the method 
 - Report in the canonical format: "Verified through R3 (tiny overfit). Not yet verified by smoke run, pilot, or full study." Separate what is SUPPORTED from what is NOT SUPPORTED yet.
 
 See `superpowers-ml:ml-feedback-ladder` for rung definitions and `superpowers-ml:ml-result-review` for the full conclusion structure.
+=======
+>>>>>>> upstream/main

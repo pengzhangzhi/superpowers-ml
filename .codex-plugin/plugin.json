@@ -1,7 +1,13 @@
 {
+<<<<<<< HEAD
   "name": "superpowers-ml",
   "version": "5.1.0-ml.0",
   "description": "An agentic skills framework & software development methodology that works: planning, TDD, debugging, and collaboration workflows — plus a conservative ML-research layer. Fork of obra/superpowers.",
+=======
+  "name": "superpowers",
+  "version": "6.3.0",
+  "description": "An agentic skills framework & software development methodology that works: planning, TDD, debugging, and collaboration workflows.",
+>>>>>>> upstream/main
   "author": {
     "name": "Jesse Vincent",
     "email": "jesse@fsck.com",
@@ -22,12 +28,13 @@
     "machine-learning"
   ],
   "skills": "./skills/",
+  "hooks": {},
   "interface": {
     "displayName": "Superpowers ML",
     "shortDescription": "Planning, TDD, debugging, delivery, and ML-research workflows for coding agents",
     "longDescription": "Use Superpowers ML to guide agent work through brainstorming, implementation planning, test-driven development, systematic debugging, parallel execution, code review, and finish-the-branch workflows — plus ML-research extensions: experiment design, a cheap-to-expensive verification ladder (rungs R0-R7), and sober result review.",
     "developerName": "Jesse Vincent",
-    "category": "Coding",
+    "category": "Developer Tools",
     "capabilities": [
       "Interactive",
       "Read",

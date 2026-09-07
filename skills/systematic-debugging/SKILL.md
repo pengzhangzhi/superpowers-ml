@@ -7,8 +7,6 @@ description: Use when encountering any bug, test failure, or unexpected behavior
 
 ## Overview
 
-Random fixes waste time and create new bugs. Quick patches mask underlying issues.
-
 **Core principle:** ALWAYS find root cause before attempting fixes. Symptom fixes are failure.
 
 **Violating the letter of this process is violating the spirit of debugging.**
@@ -188,6 +186,7 @@ You MUST complete each phase before proceeding to the next.
    - Test passes now?
    - No other tests broken?
    - Issue actually resolved?
+   - Use the `superpowers:verification-before-completion` skill before claiming success
 
 4. **If Fix Doesn't Work**
    - STOP
@@ -237,7 +236,7 @@ If you catch yourself thinking:
 - "Is that not happening?" - You assumed without verifying
 - "Will it show us...?" - You should have added evidence gathering
 - "Stop guessing" - You're proposing fixes without understanding
-- "Ultrathink this" - Question fundamentals, not just symptoms
+- "Ultra-think this" - Question fundamentals, not just symptoms
 - "We're stuck?" (frustrated) - Your approach isn't working
 
 **When you see these:** STOP. Return to Phase 1.
@@ -282,6 +281,7 @@ These techniques are part of systematic debugging and available in this director
 - **`root-cause-tracing.md`** - Trace bugs backward through call stack to find original trigger
 - **`defense-in-depth.md`** - Add validation at multiple layers after finding root cause
 - **`condition-based-waiting.md`** - Replace arbitrary timeouts with condition polling
+<<<<<<< HEAD
 
 **Related skills:**
 - **superpowers-ml:test-driven-development** - For creating failing test case (Phase 4, Step 1)
@@ -311,3 +311,5 @@ In ML, a "fix" can silently rewrite your results. Before fixing, CLASSIFY the fa
 **Preemption, requeue, and node failure are OPERATIONAL interruptions, not scientific failures - resume from checkpoint, do not re-conclude.**
 
 **Any change to model logic, data, hyperparameters, training logic, or metrics is an EXPERIMENT change, not a silent bugfix - it can invalidate comparisons, so get your human partner's approval first.**
+=======
+>>>>>>> upstream/main
