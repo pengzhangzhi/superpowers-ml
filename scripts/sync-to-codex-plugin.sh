@@ -44,15 +44,21 @@ DEST_REL="plugins/superpowers"
 # (.DS_Store is intentionally unanchored — Finder creates them everywhere.)
 EXCLUDES=(
   # Dotfiles and infra — top-level only
+  "/.antigravity-plugin/"
   "/.claude/"
   "/.claude-plugin/"
   "/.codex/"
   "/.cursor-plugin/"
+  "/.devin-plugin/"
   "/.git/"
   "/.gitattributes"
   "/.github/"
   "/.gitignore"
+  "/.gitmodules"
+  "/.kimi-plugin/"
   "/.opencode/"
+  "/.pi/"
+  "/.pre-commit-config.yaml"
   "/.version-bump.json"
   "/.worktrees/"
   ".DS_Store"
@@ -64,16 +70,20 @@ EXCLUDES=(
   "/GEMINI.md"
   "/RELEASE-NOTES.md"
   "/gemini-extension.json"
+  "/index.js"
   "/package.json"
 
   # Directories not shipped by canonical Codex plugins
   "/commands/"
   "/docs/"
-  "/hooks/"
+  "/evals/"
   "/lib/"
   "/scripts/"
   "/tests/"
   "/tmp/"
+
+  # Other harnesses' assets
+  "/assets/antigravity-logo.png"
 )
 
 # =============================================================================
@@ -169,7 +179,7 @@ command -v python3 >/dev/null || die "python3 not found in PATH"
 
 gh auth status >/dev/null 2>&1 || die "gh not authenticated — run 'gh auth login'"
 
-[[ -d "$UPSTREAM/.git" ]]         || die "upstream '$UPSTREAM' is not a git checkout"
+[[ -e "$UPSTREAM/.git" ]]         || die "upstream '$UPSTREAM' is not a git checkout"
 [[ -f "$UPSTREAM/.codex-plugin/plugin.json" ]] || die "committed Codex manifest missing at $UPSTREAM/.codex-plugin/plugin.json"
 
 # Read the upstream version from the committed Codex manifest.
@@ -213,7 +223,7 @@ trap cleanup EXIT
 
 if [[ -n "$LOCAL_CHECKOUT" ]]; then
   DEST_REPO="$(cd "$LOCAL_CHECKOUT" && pwd)"
-  [[ -d "$DEST_REPO/.git" ]] || die "--local path '$DEST_REPO' is not a git checkout"
+  [[ -e "$DEST_REPO/.git" ]] || die "--local path '$DEST_REPO' is not a git checkout"
 else
   echo "Cloning $FORK..."
   CLEANUP_DIR="$(mktemp -d)"
@@ -419,7 +429,7 @@ if [[ $BOOTSTRAP -eq 1 ]]; then
   COMMIT_TITLE="bootstrap superpowers v$UPSTREAM_VERSION from upstream main @ $UPSTREAM_SHORT"
   PR_BODY="Initial bootstrap of the superpowers plugin from upstream \`main\` @ \`$UPSTREAM_SHORT\` (v$UPSTREAM_VERSION).
 
-Creates \`plugins/superpowers/\` by copying the tracked plugin files from upstream, including \`.codex-plugin/plugin.json\` and \`assets/\`.
+Creates \`plugins/superpowers/\` by copying the tracked plugin files from upstream, including \`.codex-plugin/plugin.json\`, \`assets/\`, and \`hooks/\`.
 
 Run via: \`scripts/sync-to-codex-plugin.sh --bootstrap\`
 Upstream commit: https://github.com/obra/superpowers/commit/$UPSTREAM_SHA
@@ -429,7 +439,7 @@ else
   COMMIT_TITLE="sync superpowers v$UPSTREAM_VERSION from upstream main @ $UPSTREAM_SHORT"
   PR_BODY="Automated sync from superpowers upstream \`main\` @ \`$UPSTREAM_SHORT\` (v$UPSTREAM_VERSION).
 
-Copies the tracked plugin files from upstream, including the committed Codex manifest and assets.
+Copies the tracked plugin files from upstream, including the committed Codex manifest, assets, and hooks.
 
 Run via: \`scripts/sync-to-codex-plugin.sh\`
 Upstream commit: https://github.com/obra/superpowers/commit/$UPSTREAM_SHA
